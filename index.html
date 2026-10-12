@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Library Management System</h1>
+
+    <div class="container">
+        <h2>Add a Book</h2>
+
+        <input type="text" id="bookId" placeholder="Enter Book ID">
+        <input type="text" id="bookName" placeholder="Enter Book Name">
+        <input type="text" id="author" placeholder="Enter Author Name">
+
+        <button onclick="addBook()">Add Book</button>
+
+        <h2>Book List</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                </tr>
+            </thead>
+            <tbody id="bookList">
+                <tr>
+                    <td>101</td>
+                    <td>Computer Basics</td>
+                    <td>John</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function addBook() {
+            let id = document.getElementById("bookId").value.trim();
+            let name = document.getElementById("bookName").value.trim();
+            let author = document.getElementById("author").value.trim();
+
+            if (id === "" || name === "" || author === "") {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            let table = document.getElementById("bookList");
+            let row = table.insertRow();
+
+            row.insertCell(0).textContent = id;
+            row.insertCell(1).textContent = name;
+            row.insertCell(2).textContent = author;
+
+            document.getElementById("bookId").value = "";
+            document.getElementById("bookName").value = "";
+            document.getElementById("author").value = "";
+        }
+    </script>
+
+</body>
+</html>
